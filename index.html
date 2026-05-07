@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>precisodesuaajudaporfavormeabra</title>
+    <title>†_O_SEGREDO_DA_CHAVE_†</title>
     <style>
         body {
             background-color: #050505;
@@ -23,21 +23,26 @@
             border: 1px solid #333;
             padding: 40px;
             background-color: #0a0a0a;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
         }
 
         h1 {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
             margin-bottom: 30px;
-            color: #888;
+            color: #666;
+            text-transform: uppercase;
         }
 
         .cipher-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #ff4444;
             margin: 20px 0;
             user-select: none;
+            letter-spacing: 1px;
+            background: #111;
+            padding: 15px;
+            border-radius: 4px;
         }
 
         input {
@@ -46,30 +51,39 @@
             border-bottom: 1px solid #444;
             color: #00ff00;
             font-family: inherit;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
             outline: none;
-            padding: 5px;
-            width: 300px;
+            padding: 10px;
+            width: 320px;
+            margin-top: 20px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-bottom-color: #00ff00;
         }
 
         button {
-            margin-top: 20px;
+            margin-top: 30px;
             background: transparent;
             border: 1px solid #444;
             color: #888;
-            padding: 10px 20px;
+            padding: 12px 30px;
             cursor: pointer;
-            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.5s;
         }
 
         button:hover {
             color: #00ff00;
             border-color: #00ff00;
+            background: rgba(0, 255, 0, 0.05);
         }
 
         .hint {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 0.7rem;
             color: #222;
         }
@@ -80,34 +94,39 @@
     <div class="container">
         <h1>O NOME DO SEGREDO É A CHAVE</h1>
         
-        <!-- Texto cifrado usando Vigenère com a chave 'bl4ast' -->
-        <!-- Frase original: ELE ESTA CORRENDO VEJA O QUE EU VI -->
         <div class="cipher-text">
             <p>wz6ubH.'6a)wf6809xwp&a9-p@+ey!fo)</p>
         </div>
 
-        <input type="text" id="answer" placeholder="Digite a resposta aqui..." autocomplete="off">
+        <input type="text" id="answer" placeholder="Insira a chave..." autocomplete="off">
         <br>
-        <button onclick="verify()">VERIFICAR</button>
-
-        
+        <button onclick="verify()">Verificar Sincronia</button>
     </div>
 
     <script>
         function verify() {
-            // Pegamos o valor, transformamos em minúsculo e removemos espaços sobrando
+            // Pegamos o valor, removemos espaços e deixamos tudo em minúsculo
             const val = document.getElementById('answer').value.toLowerCase().trim();
             
-            // A comparação deve ser feita com a frase em MINÚSCULO aqui no código
-            if (val == "VOCÊ DEVE REVELAR O SEGREDO") {
+            // Definimos as variações aceitáveis (com e sem acento)
+            const respostaCerta = "você deve revelar o segredo";
+            const respostaSemAcento = "voce deve revelar o segredo";
+            
+            if (val === respostaCerta || val === respostaSemAcento) {
                 alert("ACESSO CONCEDIDO.");
-                // Substitua pelo seu link real do YouTube quando estiver pronto
                 window.location.href = "https://youtube.com/shorts/DNINMWe0IFQ?feature=share";
             } else {
-                alert("CHAVE INCORRETA. TENTE NOVAMENTE.");
+                alert("CHAVE INCORRETA. A FREQUÊNCIA PERMANECE TURVA.");
                 document.getElementById('answer').value = "";
             }
         }
+
+        // Permite apertar "Enter" para enviar
+        document.getElementById('answer').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                verify();
+            }
+        });
     </script>
 </body>
 </html>
